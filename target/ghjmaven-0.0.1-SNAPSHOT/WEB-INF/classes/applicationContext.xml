@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+    
+   <context:component-scan base-package="cn.zx.ghjmaven"></context:component-scan>
+   <context:property-placeholder location="classpath:jdbc.properties"/>
+   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+<!--     配置 连接数据库参数  c3p0 连接池  -->
+         <property name="driverClass" value="${jdbc.driverClass}"></property>
+         <property name="jdbcUrl" value="${jdbc.url}"></property>
+         <property name="user" value="${jdbc.username}"></property>
+         <property name="password" value="${jdbc.password}"></property>
+    </bean>
+     <!-- spring  data jpa 配置学习   参照官方文档   EntityManagerFacotry  -->
+     <!-- 扫描所有dao 配置  作用  :  spring data jpa  自动给该包包含子包 下的所有的接口 提供实现类  -->
+     <jpa:repositories base-package="cn.zx.ghjmaven.dao"></jpa:repositories>
+     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描实体类  包以及子包 -->
+		<property name="packagesToScan" value="cn.zx.ghjmaven.domain" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="MYSQL" />
+				<!-- 自动建表 -->
+				<property name="generateDdl" value="true" />
+				<!-- 方言 -->
+				<property name="databasePlatform" value="${jdbc.dialect}"></property>
+				<!-- 显示sql -->
+				<property name="showSql" value="true"></property>
+			</bean>
+		</property>
+	</bean>
+       <!-- spring  data jpa 事务管理 配置 -->
+  	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>

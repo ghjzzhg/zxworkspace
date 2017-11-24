@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=GBK"
+    pageEncoding="GBK"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>本地搜索配置</title>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/api?key=kRHuqFbkaoDcf5CsmOY0fwlpOZZgMxkt&v=1.1&services=true">
+</script>
+<style type="text/css">
+		body, html,#container {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+</style>
+</head>
+<body onload="load()">
+<%
+    String scname = request.getParameter("scname");
+ 
+    if (scname == null) {
+        scname = "";
+    } else {
+        scname = new String(scname.getBytes("iso-8859-1"), "gbk");
+    }
+%>
+<form action="#"><input type="text" name="scname"
+    value="<%=scname%>" id="scname" /><input type="submit" value="提交" /></form>
+<div style="width: 800px; height: 400px; border: 1px solid gray"
+    id="container"></div>
+
+<div id="results" style="width: 100%; height: 100%; font-size: 13px; margin-top: 10px;"></div>
+</body>
+ 
+<script type="text/javascript">
+	var map = new BMap.Map("container");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(121.4, 31.2), 12);  // 初始化地图,设置中心点坐标和地图级别
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+	map.addControl(new BMap.NavigationControl());    //添加控件：缩放地图的
+	map.addControl(new BMap.ScaleControl());        //添加控件：地图显示比例的控件，默认在左下方；
+	map.addControl(new BMap.OverviewMapControl());  //添加控件：地图的缩略图的控件，默认在右下方； TrafficControl
+ 
+    function load() {
+        var scname = document.forms[0].scname.value;
+ 
+        if (scname != null && scname.length > 0) {
+            var local = new BMap.LocalSearch("上海市", {
+                renderOptions : {
+                    map : map,
+                    panel : "results",
+                    autoViewport : true,
+                    selectFirstResult : false
+                }
+            });
+ 
+            local.search(scname);
+        }
+    }
+</script>
+</html>

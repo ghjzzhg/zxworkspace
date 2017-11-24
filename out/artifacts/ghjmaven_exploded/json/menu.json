@@ -1,0 +1,11 @@
+[
+		{ "id":"11", "pId":"0", "name":"基础数据"},
+		{ "id":"112", "pId":"11", "name":"员工管理",  "page":"page_base_employee.action"},
+		{ "id":"112", "pId":"11", "name":"客户管理",  "page":"page_base_customer.action"},
+		{ "id":"113", "pId":"11", "name":"项目管理",  "page":"page_base_itemer.action"},
+		{ "id":"113", "pId":"11", "name":"上传文件管理",  "page":"page_base_uploadFile.action"},
+		{ "id":"12", "pId":"0", "name":"员工绩效"},
+		{ "id":"121", "pId":"12", "name":"项目进度" ,"page":"page_performance_noticebill_add.action"},
+		{ "id":"122", "pId":"12", "name":"项目分配" ,"page":"page_performance_quickworkorder.action"},
+		{ "id":"124", "pId":"12", "name":"员工考勤" ,"page":"page_performance_attence.action"}
+]
