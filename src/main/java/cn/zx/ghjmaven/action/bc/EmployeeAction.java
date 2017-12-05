@@ -88,7 +88,7 @@ public class EmployeeAction extends BaseAction<Employee>{
 			String city = BaiduMapUtils.getCity(lat, lng);
 //			System.out.println(city);
 			
-			Map<String, Double> map = BaiduMapUtils.getLngAndLat("上海市新银大厦");
+			Map<String, Double> map = BaiduMapUtis.getLngAndLat("上海市新银大厦");
 //			System.out.println(map.get("lng") + "--------" + map.get("lat"));
 			
 			PageRequest pageRequest = new PageRequest(page-1, rows);
