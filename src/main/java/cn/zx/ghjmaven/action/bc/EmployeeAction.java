@@ -81,7 +81,7 @@ public class EmployeeAction extends BaseAction<Employee>{
 		try {
 			String path = null;
 			String name = null;
-			send_email();
+			/*send_email();*/
 			
 			String lat = "28.694439";
 			String lng = "115.939728";
