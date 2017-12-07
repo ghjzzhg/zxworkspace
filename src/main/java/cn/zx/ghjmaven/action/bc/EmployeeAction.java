@@ -1,65 +1,41 @@
 package cn.zx.ghjmaven.action.bc;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.PublicKey;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.jar.Attributes.Name;
-
-import javax.mail.Authenticator;
-import javax.mail.BodyPart;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.lang3.StringUtils;
+import cn.zx.ghjmaven.action.base.BaseAction;
+import cn.zx.ghjmaven.domain.EmailAuthenticator;
+import cn.zx.ghjmaven.domain.Employee;
+import cn.zx.ghjmaven.utils.BaiduMapUtils;
+import cn.zx.ghjmaven.utils.MyFileUtils;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.shiro.SecurityUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 
-import cn.zx.ghjmaven.action.base.BaseAction;
-import cn.zx.ghjmaven.domain.EmailAuthenticator;
-import cn.zx.ghjmaven.domain.Employee;
-import cn.zx.ghjmaven.utils.BaiduMapUtils;
-import cn.zx.ghjmaven.utils.LngAndLatUtils;
-import cn.zx.ghjmaven.utils.MyFileUtils;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 
 @Controller("employeeAction")
 @Scope("prototype")
 @ParentPackage("ghjmaven")
 @Namespace("/bc")
 public class EmployeeAction extends BaseAction<Employee>{
-	
+
+	/*private HtmlAction htmlAction;*/
 	private Employee employee;
 //	public Employee getEmployee(){
 //		return employee;
@@ -82,6 +58,7 @@ public class EmployeeAction extends BaseAction<Employee>{
 			String path = null;
 			String name = null;
 			/*send_email();*/
+			/*htmlAction.getProvince("2015年统计用区划代码和城乡划分代码","http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2015/index.html","json");*/
 			
 			String lat = "28.694439";
 			String lng = "115.939728";

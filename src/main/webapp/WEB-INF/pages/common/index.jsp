@@ -173,20 +173,16 @@
 </script>
 </head>
 <body class="easyui-layout">
-	<div data-options="region:'north',border:false"
-		style="height:80px;padding:0px;background:url('./images/header_bg.png') no-repeat right;">
+	<div data-options="region:'north',border:false" style="height:80px;padding:0px;background:url('./images/header_bg.png') no-repeat right;">
 		<div>
-			<img src="${pageContext.request.contextPath }/images/logo.png"
-				border="0">
+			<img src="${pageContext.request.contextPath }/images/logo.png" border="0">
 		</div>
 		<div id="sessionInfoDiv" style="position: absolute;right: 5px;top:10px;">
 			[<strong>超级管理员</strong>]，欢迎<font color="red">${sessionScope.existsUser.username}</font>！您使用[<strong>${pageContext.request.remoteAddr }</strong>]IP登录！
 		</div>
 		<div style="position: absolute; right: 5px; bottom: 10px; ">
-			<a href="javascript:void(0);" class="easyui-menubutton"
-				data-options="menu:'#layout_north_pfMenu',iconCls:'icon-ok'">更换皮肤</a>
-			<a href="javascript:void(0);" class="easyui-menubutton"
-				data-options="menu:'#layout_north_kzmbMenu',iconCls:'icon-help'">控制面板</a>
+			<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'icon-ok'">更换皮肤</a>
+			<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_kzmbMenu',iconCls:'icon-help'">控制面板</a>
 		</div>
 		<div id="layout_north_pfMenu" style="width: 120px; display: none;">
 			<div onclick="changeTheme('default');">default</div>
