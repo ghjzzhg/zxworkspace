@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ghjmaven.iml" filepath="$PROJECT_DIR$/ghjmaven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zxworkspace.iml" filepath="$PROJECT_DIR$/zxworkspace.iml" />
     </modules>
   </component>
 </project>

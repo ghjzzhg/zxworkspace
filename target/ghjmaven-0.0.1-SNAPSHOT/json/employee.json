@@ -1,7 +1,0 @@
-{                                                      
-	"total":100,	
-	"rows":[ 
-		{"id":"001","name":"李大","sex":"1","entryday":"2016-02-02","birthday":"1992-02-02","register":"江苏苏州","school":"清华","phone":"13912345678","socialsecurity":"123456","publicfund":"123456"},
-		{"id":"002","name":"毛二","sex":"1","entryday":"2015-08-24","birthday":"1990-04-08","register":"上海","school":"清华","phone":"13912565678","socialsecurity":"123456","publicfund":"123456"}
-	]
-}

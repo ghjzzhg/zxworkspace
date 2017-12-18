@@ -18,7 +18,6 @@ public class WebCrawlerDemo {
   
   public void myPrint(String baseUrl) {
     Map<String, Boolean> oldMap = new LinkedHashMap<String, Boolean>(); // 存储链接-是否被遍历
-                                      // 键值对
     String oldLinkHost = ""; //host
   
     Pattern p = Pattern.compile("(https?://)?[^/\\s]*"); //比如：http://www.zifangsky.cn
@@ -31,7 +30,6 @@ public class WebCrawlerDemo {
     oldMap = crawlLinks(oldLinkHost, oldMap);
     for (Map.Entry<String, Boolean> mapping : oldMap.entrySet()) {
       System.out.println("链接：" + mapping.getKey());
-  
     }
   
   }
